@@ -1,6 +1,6 @@
 {
   "name": "xhtml-tagger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A javascript library to automagically tag XHTML content.",
   "main": "index.js",
   "scripts": {
