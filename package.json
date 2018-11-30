@@ -1,0 +1,28 @@
+{
+  "name": "xhtml-tagger",
+  "version": "0.0.1",
+  "description": "A javascript library to automagically tag XHTML content.",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "coffee -o . -c *.coffee",
+    "test": "mocha --require coffeescript/register tests/*.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhiver/xhtml-tagger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhiver/xhtml-tagger/issues"
+  },
+  "homepage": "https://github.com/jhiver/xhtml-tagger#readme",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "xregexp": "^4.2.0"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.3.2",
+    "mocha": "^5.2.0"
+  }
+}
