@@ -1,5 +1,5 @@
 # xhtml-tagger
-A javascript library to automagically tag XHTML content.
+A javascript library to automagically tag XHTML and HTML5 content.
 
 Actually the parsing is pretty relaxed, so it should also work with HTML 5 and HTML fragments.
 
