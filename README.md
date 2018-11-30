@@ -169,7 +169,7 @@ considered self closing. There is a default dictionary which is exported with `t
 
 Once again, this can be specified globally:
 
-    tagger.selfclosing.a = true
+    tagger.selfclosing.br = true
 
 When calling the function:
 
@@ -180,7 +180,7 @@ When calling the function:
 Or at the expression level:
 
     let ems = [
-      { "expression": "XHTML Tagger", "tag": "em", "selfclosing": { "b": true }
+      { "expression": "XHTML Tagger", "tag": "em", "selfclosing": { "br": true }
     ]
 
 
