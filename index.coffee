@@ -101,7 +101,7 @@ ALLOWED_TAGS =
   i: true
   b: true
   big: true
-  small: true 
+  small: true
   ins: true
   del: true
   script: true
@@ -198,8 +198,11 @@ isntWord = (item) -> return item.match XRegExp("^[^\\pL\\pN]+$")
 
 
 tagName = (item) ->
-  [ tag ] = item.match XRegExp("([\\pL\\pN]+)")
-  return tag
+  match = String(item).match /([A-Za-z_][A-Za-z0-9_.]*)/
+  if match
+    return match[0]
+  else
+    return '__weird_stuff_that_fails_test_07__'
 
 
 close = (item) -> "</#{tagName(item)}>"
@@ -207,7 +210,7 @@ close = (item) -> "</#{tagName(item)}>"
 
 
 try_match = (xml, x_init, expression, tag, attributes, stack_parent, opts) ->
-  
+
   # if this tag is excluded
   if opts.excluded
     forbidden = _.keys opts.excluded
@@ -477,7 +480,7 @@ tokenize_text = (xml, selfclose) ->
     if isSelfClose(item, selfclose) or isOpen(item) or isClose(item)
       result.push item
     else
-      result.push item.match(XRegExp("[\\pL\\pN]+|[^\\pL\\pN]+", "g"))...
+      result.push item.match(XRegExp("[[\\pL\\pN]+|[^\\pL\\pN]+", "g"))...
   return result
 
 
