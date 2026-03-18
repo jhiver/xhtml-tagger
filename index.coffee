@@ -1,5 +1,4 @@
 XRegExp = require 'xregexp'
-_ = require 'lodash'
 
 # REX/Javascript 1.0
 # Robert D. Cameron "REX: XML Shallow Parsing with Regular Expressions",
@@ -129,9 +128,10 @@ XMLParse   = (xml_doc) -> xml_doc.match new RegExp XML_SPE, "g"
 expressionParse = (expression) -> expression.match XRegExp("[\\pL\\pN]+", "g")
 
 makeTag = (tag, opts) ->
-  if _.isEmpty(opts) then return '<' + tag + '>'
+  if !opts or Object.keys(opts).length is 0 then return '<' + tag + '>'
   opt_array = []
-  _.each opts, (v, k) -> opt_array.push (k + '="' + opts[k] + '"')
+  for k, v of opts
+    opt_array.push (k + '="' + v + '"')
   return '<' + tag + ' ' + opt_array.join(' ') + '>'
 
 
@@ -213,7 +213,7 @@ try_match = (xml, x_init, expression, tag, attributes, stack_parent, opts) ->
 
   # if this tag is excluded
   if opts.excluded
-    forbidden = _.keys opts.excluded
+    forbidden = Object.keys opts.excluded
 
     # so we take all forbidden tags...
     for forbidden_tag in forbidden
@@ -476,7 +476,7 @@ _linkify = (xml, items, opts) ->
 
 tokenize_text = (xml, selfclose) ->
   result = []
-  _.each xml, (item) ->
+  for item in xml
     if isSelfClose(item, selfclose) or isOpen(item) or isClose(item)
       result.push item
     else
